@@ -1,0 +1,240 @@
+body {
+	padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+@media (max-width: 979px) {
+	body {
+		padding-top: 0;
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	/*text-transform: initial;*/
+}
+
+.navbar a.brand:hover span {
+	text-decoration:underline;
+}
+
+.page-header h1.pull-left {
+	margin-right:0.62em;
+}
+
+.jumbotron {
+	margin-top: 20px;
+}
+
+.jumbotron h1 {
+	text-transform: initial;
+}
+
+p {
+	font-size: 16px;
+}
+
+.navbar-inner {
+	padding-bottom: 0;
+}
+
+.navbar .brand {
+	text-transform: lowercase;
+	font-weight:900;
+	font-size:25px;
+	line-height:25px;
+	padding-top:10px;
+	margin-top:0;
+	min-height:0;
+	font-weight:normal!important;
+}
+
+section {
+	padding-top:60px;
+	margin-top:-60px;
+}
+
+.accordion-heading {
+font-size:16px;
+  background: #e9e9e9;
+  background: -moz-linear-gradient(top, #fafafa 0%, #e9e9e9 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fafafa), color-stop(100%, #e9e9e9));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #fafafa 0%, #e9e9e9 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #fafafa 0%, #e9e9e9 100%);
+  /* Opera11.10+ */
+  background: -ms-linear-gradient(top, #fafafa 0%, #e9e9e9 100%);
+  /* IE10+ */
+  background: linear-gradient(top, #fafafa 0%, #e9e9e9 100%);
+  /* W3C */
+
+}
+
+.accordion-inner {
+	min-height:240px;
+}
+
+
+/*  Red */
+
+.btn-red {
+	.buttonBackground(#d84a38, #c53727);
+}
+
+/*  Purple */
+
+.btn-purple {
+// Danger and error appear as red
+  .buttonBackground(#852b99, #852b99);
+}
+
+.btn-blue {
+	.buttonBackground(#4d90fe, #0072bb);
+}
+
+.m-btn.purple {
+  color: white;
+  text-shadow: none;
+  background-color: #852b99;
+  background-image: -moz-linear-gradient(top, #852b99, #852b99);
+  background-image: -ms-linear-gradient(top, #852b99, #852b99);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#852b99), to(#852b99));
+  background-image: -webkit-linear-gradient(top, #852b99, #852b99);
+  background-image: -o-linear-gradient(top, #852b99, #852b99);
+  background-image: linear-gradient(top, #852b99, #852b99);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#852b99', endColorstr='#852b99', GradientType=0);
+}
+.m-btn.purple:hover,
+.m-btn.purple:focus,
+.m-btn.purple:active,
+.m-btn.purple.active,
+.m-btn.purple.disabled,
+.m-btn.purple[disabled] {
+  background-color: #6d1b81;
+  background-image: -moz-linear-gradient(top, #6d1b81, #6d1b81);
+  background-image: -ms-linear-gradient(top, #6d1b81, #6d1b81);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6d1b81), to(#6d1b81));
+  background-image: -webkit-linear-gradient(top, #6d1b81, #6d1b81);
+  background-image: -o-linear-gradient(top, #6d1b81, #6d1b81);
+  background-image: linear-gradient(top, #6d1b81, #6d1b81);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6d1b81', endColorstr='#6d1b81', GradientType=0);
+}
+.m-btn.purple:active,
+.m-btn.purple.active {
+  background-color: #35aa47;
+  background-image: -moz-linear-gradient(top, #852b99, #6d1b81);
+  background-image: -ms-linear-gradient(top, #852b99, #6d1b81);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#852b99), to(#6d1b81));
+  background-image: -webkit-linear-gradient(top, #852b99, #6d1b81);
+  background-image: -o-linear-gradient(top, #852b99, #6d1b81);
+  background-image: linear-gradient(top, #852b99, #6d1b81);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#852b99', endColorstr='#6d1b81', GradientType=0);
+}
+
+#special .img-box {
+	margin-left: 2.6em;
+}
+
+.m-btn + .m-btn, .m-btn + .m-btn-group, .m-btn-group + .m-btn, .m-btn-group + .m-btn-group {
+margin-left: 10px;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+	color: @errorText;
+}
+
+.field-validation-valid
+{
+	display: none;
+}
+
+.input-validation-error
+{
+	background: @errorBackground!important;
+	color: @errorText!important;
+	/*border: 1px solid #ff0000!important;
+	background-color: #ffeeee!important;*/
+}
+
+    .input-validation-error span
+    {
+	color:@errorText!important;
+    }
+
+.validation-summary-errors
+{
+	.alert;
+	.alert-danger;
+	/*margin-top:0.5em;
+	font-weight: bold;
+	color: #ff0000;
+	border: 1px solid #ff0000!important;
+	background-color: #ffeeee!important;*/
+}
+
+.validation-summary-errors > span
+{
+	margin:1em;
+}
+
+.validation-summary-valid
+{
+	display: none;
+}
+
+.select2-drop
+{
+    min-width: 260px;
+    max-width:560px;
+}
+
+select2-container {
+width:auto;
+min-width:200px;
+}
+
+form label {
+	cursor: pointer;
+}
+
+.btn:hover {
+	
+}
+
+.btn.active, .btn:active {
+	.buttonBackground(#852b99, #852b99);
+}
+
+ul.thumbnails li.active {
+    .btn-purple;
+}
+
+.multi-line { height:5em; width:5em; }
+
+footer {
+	margin-top:5em;
+	font-size:0.9em;
+}
+
+.navbar .nav a,
+.navbar .nav a:hover,
+.navbar .nav a:focus {
+  border-bottom: 3px solid #fff;
+}
+
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:hover,
+.navbar .nav > .active > a:focus {
+  border-bottom: 3px solid #00ABA9;
+}
+
+.thumbnail {
+border:none;
+}

@@ -1,0 +1,127 @@
+﻿@using StackExchange.Profiling
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        
+        @this.InitClientTimings()
+        
+        <title>@ViewBag.Title &laquo; Petrus Theron</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link rel="shortcut icon" href="@Url.Content("~/Content/Images/favicon.ico")" type="image/vnd.microsoft.icon" />
+        <link rel="icon" href="@Url.Content("~/Content/Images/favicon.ico")" type="image/x-icon" />
+        @this.TimeScript("Bundled Styles.css", Styles.Render("~/bundles/styles/all"))
+        @Styles.Render("~/Content/m-buttons/css/m-buttons.css")
+        @Styles.Render("~/Content/m-buttons/css/m-icons.css")
+        @RenderSection("head", required: false)
+    </head>
+    
+    <body data-spy="scroll" data-target=".subnav" data-offset="50" screen_capture_injected="true">
+        <!-- Navbar
+            ================================================== -->
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
+                    <a class="brand" href="@Url.Action("Index", "Home", new { Area = ""})" title="Petrus Theron"  style="min-width:60px;"><span>Petrus Theron</span></a>
+                    <div class="nav-collapse collapse">
+                        @*<ul class="nav pull-right">
+                            <li class="@(Url.IsAction("Index", "Cart") ? "active" : "")"><a href="@Url.Action("Index", "Cart")">Shopping Cart <i class="icon-shopping-cart"></i></a></li>
+                        </ul>*@
+                        <ul class="nav">
+                            <li class="@(Url.IsAction("Index", "Post") ? "active" : "")"><a href="@Url.Action("Index", "Post", new { Area = "" })">Blog</a></li>
+                            <li class="@(Url.IsAction("Display", "Post", new { slug = "about" }) ? "active" : "")"><a href="@Url.Action("Display", "Post", new { slug = "about" })">About</a></li>
+
+                            @*<li class=""><a href="@Url.Action("Index", "Home")">About</a></li>*@
+                            <li class="@(Url.IsAction("Display", "Post", new { slug = "contact" }) ? "active" : "")"><a href="@Url.Action("Display", "Post", new { slug = "contact", Area = "" })">Contact</a></li>
+                        </ul>
+                        <form class="navbar-search pull-right" action="@Url.Action("Index", "Post")" method="GET">
+                            <input type="text" name="q" class="search-query" placeholder="Search">
+                            <button class="hide" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="main" class="container clear-top">
+            
+            @if (TempData["ErrorMessages"] != null)
+            {
+                <div class="alert alert-error">
+                    @foreach (string s in TempData["ErrorMessages"] as List<string>)
+                    {<p><i class="icon-warning-sign"></i> @(Html.DisplayFor(m => s, "ContextualMessage"))</p>}
+                </div>
+            }
+                    
+            @if (TempData["WarningMessages"] != null)
+            {
+                <div class="alert alert-warning">
+                    @foreach (string s in TempData["WarningMessages"] as List<string>)
+                    {<p><i class="icon-warning-sign"></i> @(Html.DisplayFor(m => s, "ContextualMessage"))</p>}
+                </div>
+            }
+
+            @if (TempData["InfoMessages"] != null)
+            {
+                <div class="alert alert-info">
+                    @foreach (string s in TempData["InfoMessages"] as List<string>)
+                    {<p><i class="icon-info-sign"></i> @(Html.DisplayFor(m => s, "ContextualMessage"))</p>}
+                </div>
+            }
+
+            @RenderBody()
+            
+            
+            <footer class="footer muted small">
+                @if (!Request.IsAuthenticated)
+                {
+                    <div class="pull-right">
+                        <a href="@Url.Action("LogOn", "Account")">Login</a>
+                    </div>
+                }
+                <p>&copy; 2012-2013 by <a href="http://freshcode.co/">Petrus Theron</a></p>
+            </footer>
+        </div>
+            
+        @this.TimeScript("Bundled Scripts.js", Scripts.Render("~/bundles/scripts/all"))
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        
+        @MiniProfiler.RenderIncludes(useExistingjQuery: true)
+        @*        <script type="text/javascript" src="@Url.Content("~/signalr/hubs")"></script>*@
+        @RenderSection("scripts", required: false)
+
+        @if (!HttpContext.Current.IsDebuggingEnabled && !Request.IsLocal)
+        {
+            <script type="text/javascript">
+
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-35894945-1']);
+                _gaq.push(['_setDomainName', '@(Request.Url.Host)']);
+                _gaq.push(['_trackPageview']);
+
+                (function () {
+                    var ga = document.createElement('script');
+                    ga.type = 'text/javascript';
+                    ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(ga, s);
+                })();
+            </script>
+        }
+    </body>
+</html>
+
+
+
+
+
+
+

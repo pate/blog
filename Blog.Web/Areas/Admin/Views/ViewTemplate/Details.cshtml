@@ -1,0 +1,10 @@
+﻿@model ViewTemplate
+
+@{
+    ViewBag.Title = Model.ViewPath + " View Template Details";
+}
+
+<a class="btn btn-large" href="@Url.Action("Edit", new { controller = "ViewTemplate", id = Model.Id })">Edit</a>
+<a class="btn btn-large" href="@Url.Action("Test", new { controller = "ViewTemplate", id = Model.Id })">Test</a>
+
+@Html.DisplayForModel()

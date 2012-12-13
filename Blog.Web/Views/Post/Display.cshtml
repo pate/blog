@@ -1,0 +1,28 @@
+﻿@model PageViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<div class="page-header">
+
+    @if (Request.IsAuthenticated)
+    {
+        <div class="subnav pull-right">
+            <ul class="nav nav-pills">
+                <li><a href="@Url.Action("Edit", "Page", new {id = Model.Id, Area = Constants.Areas.Admin})">Edit Page</a></li>
+            </ul>
+        </div>
+    }
+    <h1>@Model.Title
+        @if (Model.PublishedOn.HasValue)
+        {
+            <small>Published @Html.DisplayFor(x => Model.PublishedOn)</small>
+        }
+    </h1>
+</div>
+<div class="row-fluid">
+    <div class="span6">
+        @Model.Body
+    </div>
+</div>

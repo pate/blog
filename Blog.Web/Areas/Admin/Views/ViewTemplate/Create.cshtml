@@ -1,0 +1,19 @@
+﻿@model ViewTemplateInputModel
+
+@{
+    ViewBag.Title = "Create View Template";
+}
+
+<div class="page-header">
+    <h1>Create Template</h1>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false)
+    @Html.EditorForModel()
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary"><i class="icon-save"></i> Create Template</button>
+    </div>
+}

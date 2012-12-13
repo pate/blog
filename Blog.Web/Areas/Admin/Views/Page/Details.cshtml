@@ -1,0 +1,22 @@
+﻿@model PageViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="page-header">
+    <h1>Page Details</h1>    
+</div>
+
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="nav">
+            <li><a href="@Url.Action("Edit", new { id = Model.Id })">Edit Page</a></li>
+            <li><a href="@Url.Action("Display", "Post", new { slug = Model.Slug, Area = "" })">Display</a></li>
+        </ul>
+    </div>
+</div>
+
+
+
+@Html.DisplayForModel()

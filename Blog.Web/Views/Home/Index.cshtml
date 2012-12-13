@@ -1,0 +1,235 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Software Developer";
+}
+
+@section head
+{
+    @Styles.Render("~/Scripts/bootstrap-lightbox/bootstrap-lightbox.css")
+    <style type="text/css">
+
+        .carousel-control {
+            position: absolute;
+            top: 40%;
+            left: 15px;
+            width: 40px;
+            height: 40px;
+            margin-top: -20px;
+            font-size: 60px;
+            font-weight: 100;
+            line-height: 30px;
+            color: white;
+            text-align: center;
+            background: inherit;
+            border: none;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+            opacity: 1;
+            filter: alpha(opacity=100);
+        }
+
+        .large {
+            font-size: 1.62em;
+        }
+
+    </style>
+}
+
+<section id="home">
+    <header class="jumbotron">
+        <div class="row-fluid">
+            <div class="span7">
+                <h1>I solve business problems with software.</h1>
+                <p class="lead">Software engineer. Rock climber. <a href="http://krit.com/" title="Krit.com">Startup founder</a>.</p>
+                <div class="subnav">
+                    <ul class="nav nav-pills">
+
+                        <li class="active" class="smooth">
+                            <a href="#home">Introduction</a>
+                        </li>
+                        <li><a href="#work" class="smooth">Work</a></li>
+                        <li><a href="#skills" class="smooth">Skills</a></li>
+                    </ul>
+                </div>
+                
+                <div class="row-fluid">
+                    <div class="span10">
+                        <p>I'm your host, Petrus Theron, a software developer in Cape Town, South Africa. I have been building consumer web applications professionally since 2003.</p>
+                    </div>
+                    </div>
+                
+
+            </div>
+            <div class="span4 offset1">
+                <div>
+                    <a data-toggle="lightbox" href="#profileLightbox" title="Enlarge Photo">
+                    
+                        <img class="img-polaroid" src="https://s3-eu-west-1.amazonaws.com/petrus-blog/Petrus-Profile_400x347_grey.jpg" alt="Petrus Theron" />
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+</section>
+
+@*<div class="subnav">
+    <ul class="nav nav-pills">
+        <li class="active">
+            <a href="@Url.Action("Index", "Home")">Home</a>
+        </li>
+        <li><a href="http://github.com/pate">GitHub</a></li>
+        <li><a href="http://twitter.com/freshcode">Twitter</a></li>
+        <li><a href="http://www.facebook.com/PetrusTheron">Facebook</a></li>
+    </ul>
+</div>*@
+
+
+<section id="work">
+    <header class="page-header">
+        <h1>Work</h1>
+    </header>
+    
+@*    <div id="workCarousel" class="carousel slide">
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+            <div class="active item">123</div>
+            <div class="item">Item 1</div>
+            <div class="item">Item2</div>
+        </div>
+        <!-- Carousel nav -->
+        <a class="carousel-control left" href="#workCarousel" data-slide="prev"><i class="m-icon-big-swapleft"></i></a>
+        <a class="carousel-control right" href="#workCarousel" data-slide="next"><i class="m-icon-big-swapright"></i></a>
+    </div>*@
+
+    <ul class="thumbnails">
+        <li class="span4">
+            <div class="thumbnail">
+                <a href="@Url.Action("Display", "Post", new { slug = "krit" })" title="Krit.com">
+                    <img src="https://s3-eu-west-1.amazonaws.com/petrus-blog/krit-signage-2516_360x270.jpg" alt="Krit.com">
+                </a>
+                <div class="caption">
+                    <h3>Krit</h3>
+                    <p>Krit lets your customers reach you directly and privately from their phones. Feedback is instantly delivered to on-duty managers via email and SMS with an opportunity to respond.</p>
+                    <p><a href="@Url.Action("Display", "Post", new { slug = "krit" })" class="m-btn purple">More info <i class="m-icon-swapright m-icon-white"></i></a></p>
+                </div>
+            </div>
+        </li>
+
+        <li class="span4">
+            <div class="thumbnail">
+                <img src="https://s3-eu-west-1.amazonaws.com/petrus-blog/ifix-capetown-7612_360x270.jpg" alt="iFix Cape Town Reception Desk">
+                <div class="caption">
+                    <h3>iFix Apple<sup>&reg;</sup> Repairs</h3>
+                    <p>iFix tracks 53,000+ repair jobs, 500+ inventory items and millions in revenue at four iFix branches using my software.</p>
+                    <ul class="">
+                        <li>Used daily by 40 iFix employees.</li>
+                        <li>Used at four branches nationwide.</li>
+                        <li>Actively developed since 2009.</li>
+                    </ul>
+                      
+                    <div class="">
+                          
+                        <a href="@Url.Action("Display", "Post", new { slug = "ifix" })" class="m-btn purple">More info <i class="m-icon-swapright m-icon-white"></i></a>
+                        <a href="@Url.Action("Display", "Post", new { slug = "crm" })" class="m-btn blue">Licensing info <i class="m-icon-swapright m-icon-white"></i> </a>
+                          
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+        <li class="span4">
+            <div class="thumbnail">
+                <a href="@Url.Action("Display", "Post", new { slug = "krit" })" title="Rhythm Music Store">
+                    <img src="https://s3-eu-west-1.amazonaws.com/petrus-blog/rhythm_360x270.jpg" alt="Rhythm Music Store Home Page">
+                </a>
+                <div class="caption">
+                    <h3>Rhythm Music Store <small>2007-2012</small></h3>
+                    <p>85,000+ MP3s. Profitable for six years.</p>
+                    <p>Shut down on 31 December 2012.</p>
+                    <p><a href="@Url.Action("Display", "Post", new { slug = "rhythm" })" class="m-btn purple">More info <i class="m-icon-swapright m-icon-white"></i></a></p>
+                </div>
+            </div>
+        </li>
+        
+    </ul>
+</section>
+
+<section id="skills">
+    <header class="page-header">
+        <div class="pull-right">
+            <a href="#home" class="smooth large" title="Top of page">&uarr;</a>
+        </div>
+        <h1>Skills &amp; Qualifications</h1>
+    </header>
+    <div class="row-fluid">
+        <p>I have a degree in Electronic Engineering with Computer Science from Stellenbosch University.</p>
+        <p>This site is a simple ASP.NET MVC 4 application with MongoDb as a backing store. It utilises the following technologies:</p>
+        <ul>
+            <li>StructureMap for Dependency Injection</li>
+            <li>Repository pattern for abstracted data storage</li>
+            <li>Custom ASP.NET membership &amp; role providers</li>
+            <li><a href="http://twitter.github.com/bootstrap">Bootstrap</a> with a Metro theme for the front-end</li>
+        </ul>
+        
+        <h2>High-level Proficiencies:</h2>
+        <span class="label label-info">Product Design</span>
+        <span class="label">Business Models</span>
+        <span class="label">Team Building</span>
+        <span class="label">Infrastructure</span>
+                
+
+        <h3>I know my away around:</h3>
+        <span class="label">C#</span>
+        <span class="label">SQL Server</span>
+        <span class="label">JavaScript / jQuery</span>
+        <span class="label">CSS</span>
+        <span class="label">CSS</span>
+                
+        <h3>I also dabble in:</h3>
+        <span class="label">Python</span>
+        <span class="label">Java</span>
+        <span class="label">Clojure</span>
+        <span class="label">VBScript</span>
+                
+        <h3>I have built large systems in:</h3>
+        <span class="label">C#</span>
+        I am strong in C#, SQL Server, strongest areas Most of my time is spent designing and implementing software architecture that solves problems.        
+
+    </div>
+</section>
+
+<section id="contact">
+    <header class="page-header">
+        <h1></h1>
+    </header>
+    
+                        <a class="m-btn big purple" href="@Url.Action("Display", "Post", new { slug = "contact" })" style="margin-top:-2em;">Get in touch <i class="m-icon-big-swapright m-icon-white"></i></a>
+</section>
+
+
+<div id="profileLightbox" class="lightbox hide fade"  tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="lightbox-header">
+        <button type="button" class="close" data-dismiss="lightbox" aria-hidden="true">&times;</button>
+    </div>
+    <div class="lightbox-content">
+        <a href="#profileLightbox" data-toggle="lightbox">
+            <img src="https://s3-eu-west-1.amazonaws.com/petrus-blog/Petrus-Profile_737x640.jpg" />
+        </a>
+        <div>
+            <p>Petrus Theron. iFix Year-end function at Quay Four, Waterfront.</p>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/Scripts/bootstrap-lightbox/bootstrap-lightbox.js")
+    <script type="text/javascript">
+        $(function () {
+            //$('#workCarousel').carousel();
+        });
+    </script>
+}

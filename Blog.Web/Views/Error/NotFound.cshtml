@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Page Not Found";
+}
+
+<div class="page-header">
+    <h1 class="pagination-centered">404 Not Found</h1>
+    <h2 class="pagination-centered">Looks like something is missing. My bad.</></h2>
+</div>
+
+@if (Request.IsAuthenticated)
+{
+    <a class="btn btn-primary btn-large" href="@Url.Action("Create", "Page", new { area = Constants.Areas.Admin, slug = "123" })">New "" Post</a>
+}
+
+<div class="row-fluid">
+    <div class="span12 pagination-centered">
+        <img src="http://petrus-blog.s3-website-eu-west-1.amazonaws.com/404.png" alt="Roger Wilco 404" />
+    </div>
+</div>
