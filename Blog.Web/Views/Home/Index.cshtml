@@ -166,29 +166,31 @@
     </header>
     <div class="row-fluid">
         <p>I have a degree in Electronic Engineering with Computer Science from Stellenbosch University.</p>
-        <p>This site is a simple ASP.NET MVC 4 application with MongoDb as a backing store. It utilises the following technologies:</p>
-        <ul>
-            <li>StructureMap for Dependency Injection</li>
-            <li>Repository pattern for abstracted data storage</li>
-            <li>Custom ASP.NET membership &amp; role providers</li>
-            <li><a href="http://twitter.github.com/bootstrap">Bootstrap</a> with a Metro theme for the front-end</li>
-        </ul>
         
-        <h2>High-level Proficiencies:</h2>
-        <span class="label label-info">Product Design</span>
+        <h2>High-level:</h2>
+        <span class="label label-info">Software Product Design</span>
+        <span class="label label-important">User Experience Design</span>
+        <span class="label label-info">Software Infrastructure &amp; Architecture</span>
         <span class="label">Business Models</span>
-        <span class="label">Team Building</span>
-        <span class="label">Infrastructure</span>
-                
+        <span class="label">Copywriting</span>
+        <span class="label">Online Marketing</span>
 
         <h3>I know my away around:</h3>
         <span class="label">C#</span>
         <span class="label">SQL Server</span>
         <span class="label">JavaScript / jQuery</span>
         <span class="label">CSS</span>
-        <span class="label">CSS</span>
+        
+        <p>This site is a custom ASP.NET MVC 4 application with MongoDb as a backing store. It utilises the following technologies:</p>
+        <ul>
+            <li>Amazon Route53 for DNS</li>
+            <li>Hosted on a dedicated server in Cape Town</li>
+            <li>StructureMap for dependency injection</li>
+            <li>Custom ASP.NET membership &amp; role providers</li>
+            <li><a href="http://twitter.github.com/bootstrap">Bootstrap</a> with a customised Metro theme for the front-end</li>
+        </ul>
                 
-        <h3>I also dabble in:</h3>
+        @*        <h3>I also dabble in:</h3>
         <span class="label">Python</span>
         <span class="label">Java</span>
         <span class="label">Clojure</span>
@@ -196,7 +198,7 @@
                 
         <h3>I have built large systems in:</h3>
         <span class="label">C#</span>
-        I am strong in C#, SQL Server, strongest areas Most of my time is spent designing and implementing software architecture that solves problems.        
+        I am strong in C#, SQL Server, strongest areas Most of my time is spent designing and implementing software architecture that solves problems.        *@
 
     </div>
 </section>
@@ -205,10 +207,8 @@
     <header class="page-header">
         <h1></h1>
     </header>
-    
-                        <a class="m-btn big purple" href="@Url.Action("Display", "Post", new { slug = "contact" })" style="margin-top:-2em;">Get in touch <i class="m-icon-big-swapright m-icon-white"></i></a>
+    <a class="m-btn big purple" href="@Url.Action("Display", "Post", new { slug = "contact" })" style="margin-top:-2em;">Get in touch <i class="m-icon-big-swapright m-icon-white"></i></a>
 </section>
-
 
 <div id="profileLightbox" class="lightbox hide fade"  tabindex="-1" role="dialog" aria-hidden="true">
     <div class="lightbox-header">
@@ -216,7 +216,7 @@
     </div>
     <div class="lightbox-content">
         <a href="#profileLightbox" data-toggle="lightbox">
-            <img src="https://s3-eu-west-1.amazonaws.com/petrus-blog/Petrus-Profile_737x640.jpg" />
+            <img src="https://s3-eu-west-1.amazonaws.com/petrus-blog/Petrus-Profile_737x640.jpg" alt="Petrus Theron. iFix Year-end function 2011." />
         </a>
         <div>
             <div class="lightbox-caption"><p>Me at the 2011 iFix year-end function at Quay Four, Waterfront.</p></div>
