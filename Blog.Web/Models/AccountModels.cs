@@ -36,9 +36,6 @@ namespace Blog.Web.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
-
-        [HiddenInput]
-        public string ReturnUrl { get; set; }
     }
 
     public class RegisterModel

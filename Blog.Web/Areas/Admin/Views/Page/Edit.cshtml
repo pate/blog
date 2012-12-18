@@ -6,31 +6,89 @@
 
 @section head
 {
-    @Styles.Render("~/Scripts/redactor/redactor.css")
+    @Styles.Render("~/Scripts/codemirror-3.0/lib/codemirror.css")
+@Styles.Render("~/Scripts/codemirror-3.0/theme/night.css")
+    <style type="text/css">
+        body, html {
+            height: 100%;
+        }
+
+        #Body, #preview {
+            height: 100%;
+            overflow: scroll;
+        }
+        .CodeMirror {
+            height: 100%;
+            width: 99%;
+            border: 1px solid #ccc;
+            overflow: scroll;
+        }
+
+    </style>
 }
 
 @using (Html.BeginForm())
 {
-    <div class="page-header">
-        <h1>Title</h1>
+    <div class="page-header1">
+        <div class="row-fluid">
+                @Html.TextBoxFor(x => x.Title, new { placeholder = "Title" }) @Html.EditorFor(x => x.Slug, new {})
+            <button type="submit" class="btn btn-primary btn-large"><i class="icon-save"></i> Update Page</button>
+            <a href="@Url.Action("Display", "Page", new { slug = Model.Slug, area = "" })" class="btn btn-large"><i class="icon-undo"></i> Cancel</a>
+                
+       
+        </div>
     </div>
     @Html.ValidationSummary(false)
-    @Html.EditorForModel()
-    
-    <div class="form-actions">
-        <button type="submit" class="btn btn-primary btn-large"><i class="icon-save"></i> Update Page</button>
+
+    <div class="row-fluid">
+        <div class="span6">
+            @Html.EditorFor(x => x.Body)
+        </div>
+        <div class="span6">
+            <div id="preview"></div>
+        </div>
     </div>
+    
+    
+    
+        @*<iframe id="preview"></iframe>*@
+
 }
 
 @section scripts
 {
-    @Scripts.Render("~/Scripts/redactor/redactor.js")
+    @Scripts.Render("~/Scripts/codemirror-3.0/lib/codemirror.js")
+@Scripts.Render("~/Scripts/codemirror-3.0/mode/xml/xml.js")
+@Scripts.Render("~/Scripts/codemirror-3.0/mode/javascript/javascript.js")
+@Scripts.Render("~/Scripts/codemirror-3.0/mode/htmlmixed/htmlmixed.js")
     <script type="text/javascript">
-        $(function () {
-            $('textarea').redactor({
-                minHeight: 400,
-                wym: true
+
+        $(function() {
+            var delay;
+            // Initialize CodeMirror editor with a nice html5 canvas demo.
+            var editor = CodeMirror.fromTextArea(document.getElementById('Body'), {
+                mode: 'text/html',
+                tabMode: 'indent',
+                lineWrapping: true
             });
+            editor.on('change', function() {
+                clearTimeout(delay);
+                delay = setTimeout(updatePreview, 300);
+            });
+
+            function updatePreview() {
+                $('#preview').html(editor.getValue());
+                //var previewFrame = document.getElementById('preview');
+                //var preview = previewFrame.contentDocument || previewFrame.contentWindow.document;
+                //preview.open();
+                ////preview.write('<html><head><link type="text/css" src="test.css" /></head>');
+                //preview.write(editor.getValue());
+                ////preview.write('</html>');
+                //preview.close();
+            }
+
+            setTimeout(updatePreview, 300);
+
         });
     </script>
 }

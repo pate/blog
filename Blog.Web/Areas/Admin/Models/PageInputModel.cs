@@ -13,8 +13,6 @@ namespace Blog.Web.Areas.Admin.Models
         [DataType(DataType.MultilineText)]
         public string Body { get; set; }
 
-        public string ImageUrl { get; set; }
-
         public string ViewPath { get; set; }
 
         public bool IsActive { get; set; }

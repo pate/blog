@@ -10,8 +10,7 @@ using DreamSongs.MongoRepository;
 
 namespace Blog.Web.Areas.Admin.Controllers
 {
-    [Authorize] // admin?
-    public class ViewTemplateController : Controller
+    public class ViewTemplateController : AdminController
     {
         protected readonly IRepository<ViewTemplate> Templates;
         public ViewTemplateController(IRepository<ViewTemplate> templateRepo)

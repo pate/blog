@@ -1,0 +1,13 @@
+﻿@model MembershipUser
+
+@{
+    ViewBag.Title = "User " + Model.UserName;
+}
+
+<div class="page-header">
+    <h1>User Details</h1>
+</div>
+
+@Html.DisplayForModel()
+
+<a href="@Url.Action("Edit", new { id = Model.UserName })">Edit User</a>

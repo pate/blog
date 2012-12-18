@@ -3,6 +3,7 @@ using System.Configuration.Provider;
 using System.Linq;
 using System.Web.Mvc;
 using Blog.Data.Models;
+using Blog.Web.Helpers;
 using DreamSongs.MongoRepository;
 
 namespace Blog.Web.Membership
@@ -78,10 +79,11 @@ namespace Blog.Web.Membership
             if (Roles.All().Count(x => x.Name == roleName) > 0)
                 throw new ProviderException();
 
-            var role = Activator.CreateInstance<Role>();
-
-            role.Name = roleName;
-            role.Description = string.Empty;
+            var role = new Role
+                           {
+                               Name = roleName,
+                               Description = string.Empty
+                           };
 
             Roles.Add(role);
         }
@@ -139,7 +141,7 @@ namespace Blog.Web.Membership
 
             if (user == null) throw new ProviderException();
 
-            return (from r in user.RoleAssignment select r.Name).ToArray();
+            return (from r in user.RoleAssignment.NullToEmpty() select r.Name).ToArray();
         }
 
         public override string[] GetUsersInRole(string roleName)

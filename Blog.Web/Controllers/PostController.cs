@@ -1,10 +1,7 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
-using System.Web.WebPages;
 using AutoMapper;
 using Blog.Data.Models;
-using Blog.Web.Helpers;
 using Blog.Web.ViewModels;
 using DreamSongs.MongoRepository;
 using PagedList;
@@ -13,11 +10,11 @@ namespace Blog.Web.Controllers
 {
     public class PostController : Controller
     {
-        private IRepository<Page> Pages { get; set; }
+        private IRepository<Post> Posts { get; set; }
 
-        public PostController(IRepository<Page> pageRepo)
+        public PostController(IRepository<Post> postRepo)
         {
-            Pages = pageRepo;
+            Posts = postRepo;
         }
 
         public ActionResult Index(
@@ -26,14 +23,14 @@ namespace Blog.Web.Controllers
             int pageSize = 20
             )
         {
-            var pages = Pages.All();
+            var posts = Posts.All();
 
             if (!string.IsNullOrEmpty(q))
-                pages = pages.Where(x => x.Body.Contains(q));
+                posts = posts.Where(x => x.Body.Contains(q));
 
-            var pagedPages = from p in pages
+            var pagedPosts = from p in posts
                              where p.IsActive
-                             select new PageListViewModel
+                             select new PostListViewModel
                                         {
                                             Id = p.Id,
                                             Slug = p.Slug,
@@ -42,7 +39,7 @@ namespace Blog.Web.Controllers
                                             ImageUrl = p.ImageUrl
                                         };
 
-            var viewModel = pagedPages.ToPagedList(page, pageSize);
+            var viewModel = pagedPosts.ToPagedList(page, pageSize);
 
             return View(viewModel);
         }
@@ -50,29 +47,25 @@ namespace Blog.Web.Controllers
         [HttpGet]
         public ActionResult Display(string slug)
         {
-            var page = Pages.All().FirstOrDefault(x => x.Slug == slug);
-            if (page == null)
+            var post = Posts.All().FirstOrDefault(x => x.Slug == slug);
+            if (post == null)
                 return HttpNotFound("no such page");
 
-            var viewModel = Mapper.Map<PageViewModel>(page);
+            var viewModel = Mapper.Map<PostViewModel>(post);
 
-            if (page.ViewPath.IsEmpty())
-                return View(viewModel);
-
-            return View(page.ViewPath, viewModel);
-            //return View(System.IO.Path.GetFileNameWithoutExtension(res.ViewName));
+            return View(viewModel);
         }
 
         [HttpGet]
         public ActionResult Permalink(string id, string title)
         {
-            var page = Pages.GetById(id);
-            if (page == null)
+            var post = Posts.GetById(id);
+            if (post == null)
                 return HttpNotFound("no such page");
 
-            var viewModel = Mapper.Map<PageViewModel>(page);
+            var viewModel = Mapper.Map<PostViewModel>(post);
 
-            return View("View", viewModel);
+            return View("Display", viewModel);
         }
 
     }

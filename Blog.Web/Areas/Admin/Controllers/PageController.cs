@@ -10,8 +10,7 @@ using PagedList;
 
 namespace Blog.Web.Areas.Admin.Controllers
 {
-    [Authorize]
-    public class PageController : Controller
+    public class PageController : AdminController
     {
         private IRepository<Page> Pages { get; set; }
 
@@ -119,7 +118,7 @@ namespace Blog.Web.Areas.Admin.Controllers
 
                 this.FlashInfo("Updated page.");
 
-                return RedirectToAction("Display", new { controller = "Post", area = string.Empty, slug = page.Slug });
+                return RedirectToAction("Display", new { controller = "Page", area = string.Empty, slug = page.Slug });
             }
 
             return View(inputModel);

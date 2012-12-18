@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Configuration;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Blog.Web.App_Start
@@ -9,28 +10,56 @@ namespace Blog.Web.App_Start
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            var homePageSlug = ConfigurationManager.AppSettings["HomePageSlug"];
+
             routes.MapRoute(
-                name: "Pages",
-                url: "{slug}.html",
-                defaults: new { controller = "Post", action = "Display" }
+                name: "Home Page",
+                url: "",
+                defaults: new { controller = "Page", action = "Display", slug = homePageSlug },
+                namespaces: new[] { "Blog.Web.Controllers" }
             );
 
             routes.MapRoute(
-                name: "Permalink",
-                url: "posts/{id}",
-                defaults: new { controller = "Post", action = "Permalink" }
+                name: "Posts",
+                url: "{slug}.html",
+                defaults: new { controller = "Post", action = "Display", area = "" },
+                namespaces: new [] { "Blog.Web.Controllers" }
             );
+            
+            routes.MapRoute(
+                name: "Posts Permalink",
+                url: "posts/{id}",
+                defaults: new { controller = "Post", action = "Permalink", area = "" },
+                namespaces: new[] { "Blog.Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Pages",
+                url: "pages/{slug}.html",
+                defaults: new { controller = "Page", action = "Display", area = "" },
+                namespaces: new[] { "Blog.Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Pages Permalink",
+                url: "pages/{id}",
+                defaults: new { controller = "Page", action = "Permalink", area = "" },
+                namespaces: new[] { "Blog.Web.Controllers" }
+            );
+
 
             routes.MapRoute(
                 name: "Login",
                 url: "login",
-                defaults: new { controller = "Account", action = "LogOn" }
+                defaults: new { controller = "Account", action = "LogOn" },
+                namespaces: new[] { "Blog.Web.Controllers" }
             );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "Blog.Web.Controllers" }
             );
         }
     }

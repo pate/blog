@@ -1,0 +1,16 @@
+﻿@model PostViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete this post?</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.DisplayForModel()
+    
+    <div class="form-actions">
+        <button type="submit"><i class="icon-delete"></i> Delete Post</button>
+    </div>
+}

@@ -43,7 +43,7 @@
                 @Html.LabelFor(m => m.RememberMe)
             </div>
             
-            @Html.HiddenFor(x => x.ReturnUrl)
+            @Html.Hidden("returnUrl", Request["returnUrl"])
 
             <p>
                 <input type="submit" value="Log On" />

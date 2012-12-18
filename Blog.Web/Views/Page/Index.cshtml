@@ -1,0 +1,37 @@
+﻿@model PagedList.IPagedList<PageListViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="page-header">
+    <h1>Pages</h1>
+</div>
+
+@if (Request.IsAuthenticated)
+{
+    <a href="@Url.Action("Create", "Page", new { Area = Constants.Areas.Admin })" class="btn btn-primary">New Page</a>
+}
+
+@if (Model.TotalItemCount == 0)
+{
+    <p>Zero search results. Try broadening your query or <a href="@Url.Action("Index", "Page")">show all pages</a>.</p>
+}
+
+
+<div class="media">
+    @foreach (var page in Model)
+    {
+        <div class="media-body">
+            <h4 class="media-heading"><a href="@Url.Action("Display", "Page", new {slug = page.Slug})">@page.Title</a></h4>
+            <div class="media">
+                @page.Description
+            </div>
+        </div>
+    }
+</div>
+
+@if (Model.TotalItemCount > 0)
+{
+    @Html.Pager(Model, "Index", "Page")
+}

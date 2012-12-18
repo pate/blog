@@ -1,0 +1,37 @@
+﻿@using Blog.Web
+@model PostInputModel
+
+@{
+    ViewBag.Title = "Edit Post " + Model.Title;
+}
+
+@section head
+{
+    @Styles.Render("~/Scripts/redactor/redactor.css")
+}
+
+@using (Html.BeginForm(null, null, new {area = Constants.Areas.Admin }, FormMethod.Post))
+{
+    <div class="page-header">
+        <h1>Title</h1>
+    </div>
+    @Html.ValidationSummary(false)
+    @Html.EditorForModel()
+    
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary btn-large"><i class="icon-save"></i> Update Post</button>
+    </div>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/Scripts/redactor/redactor.js")
+    <script type="text/javascript">
+        $(function () {
+            $('textarea').redactor({
+                minHeight: 400,
+                wym: true
+            });
+        });
+    </script>
+}

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security;
 using System.Web.Mvc;
 using System.Web.Security;
 using Blog.Web.Models;
@@ -20,7 +21,7 @@ namespace Blog.Web.Controllers
         // POST: /Account/LogOn
 
         [HttpPost]
-        public ActionResult LogOn(LogOnModel model)
+        public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -30,10 +31,10 @@ namespace Blog.Web.Controllers
 
                     this.FlashInfo("You are now logged in as " + model.Username);
 
-                    if (Url.IsLocalUrl(model.ReturnUrl) && model.ReturnUrl.Length > 1 && model.ReturnUrl.StartsWith("/")
-                        && !model.ReturnUrl.StartsWith("//") && !model.ReturnUrl.StartsWith("/\\"))
+                    if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
+                        && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
                     {
-                        return Redirect(model.ReturnUrl);
+                        return Redirect(returnUrl);
                     }
                     else
                     {
@@ -65,6 +66,8 @@ namespace Blog.Web.Controllers
 
         public ActionResult Register()
         {
+            throw new SecurityException("registration is disabled");
+
             return View();
         }
 
@@ -74,6 +77,7 @@ namespace Blog.Web.Controllers
         [HttpPost]
         public ActionResult Register(RegisterModel model)
         {
+            throw new SecurityException("registration is disabled");
             if (ModelState.IsValid)
             {
                 // Attempt to register the user

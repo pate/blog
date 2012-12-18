@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<PageListViewModel>
+﻿@model PagedList.IPagedList<PostListViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -10,7 +10,7 @@
 
 @if (Request.IsAuthenticated)
 {
-    <a href="@Url.Action("Create", "Page", new { Area = Constants.Areas.Admin })" class="btn btn-primary">New Post</a>
+    <a href="@Url.Action("Create", "Post", new { Area = Constants.Areas.Admin })" class="btn btn-primary">New Post</a>
 }
 
 @if (Model.TotalItemCount == 0)
@@ -20,18 +20,18 @@
 
 
 <div class="media">
-    @foreach (var page in Model)
+    @foreach (var post in Model)
     {
-        if (!page.ImageUrl.IsEmpty())
+        if (!post.ImageUrl.IsEmpty())
          {
-             <a class="pull-left" href="@Url.Action("Display", "Post", new {slug = page.Slug})">
-                 <img class="media-object" data-src="holder.js/64x64" alt="@page.Description" />
+             <a class="pull-left" href="@Url.Action("Display", "Post", new {slug = post.Slug})">
+                 <img class="media-object" src="@post.ImageUrl" alt="@post.Description" />
              </a>
          }
         <div class="media-body">
-            <h4 class="media-heading"><a href="@Url.Action("Display", "Post", new {slug = page.Slug})">@page.Title</a></h4>
+            <h4 class="media-heading"><a href="@Url.Action("Display", "Post", new {slug = post.Slug})">@post.Title</a></h4>
             <div class="media">
-                @page.Description
+                @post.Description
             </div>
         </div>
     }

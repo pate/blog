@@ -104,21 +104,22 @@ namespace Blog.Web.Membership
 
             string passwordHash = FormsAuthentication.HashPasswordForStoringInConfigFile(password, "sha1");
 
-            var user = Activator.CreateInstance<User>();
-
-            user.Username = username;
-            user.Email = email;
-            user.PasswordHash = passwordHash;
-            user.PasswordQuestion = passwordQuestion;
-            user.PasswordAnswer = passwordAnswer;
-            user.IsApproved = isApproved;
-            user.Comment = string.Empty;
-            user.IsLockedOut = false;
-            user.CreationDate = DateTime.Now;
-            user.LastLoginDate = DateTime.Now;
-            user.LastActivityDate = DateTime.Now;
-            user.LastLockedOutDate = DateTime.Now;
-            user.LastPasswordChangedDate = DateTime.Now;
+            var user = new User
+                           {
+                               Username = username,
+                               Email = email,
+                               PasswordHash = passwordHash,
+                               PasswordQuestion = passwordQuestion,
+                               PasswordAnswer = passwordAnswer,
+                               IsApproved = isApproved,
+                               Comment = string.Empty,
+                               IsLockedOut = false,
+                               CreationDate = DateTime.Now,
+                               LastLoginDate = DateTime.Now,
+                               LastActivityDate = DateTime.Now,
+                               LastLockedOutDate = DateTime.Now,
+                               LastPasswordChangedDate = DateTime.Now
+                           };
 
             Users.Add(user); // not sure if this sets id
 

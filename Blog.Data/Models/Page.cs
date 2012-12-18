@@ -17,8 +17,6 @@ namespace Blog.Data.Models
         [Required]
         public string ViewPath { get; set; }
 
-        public string ImageUrl { get; set; }
-
         [DataType(DataType.MultilineText)]
         public string Body { get; set; }
 

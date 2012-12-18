@@ -1,0 +1,43 @@
+﻿@model PagedList.IPagedList<Post>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="page-header">
+    <h1>Posts</h1>
+</div>
+
+@*<div class="navbar">
+    <div class="navbar-inner">
+        <a class="brand" href="#">Title</a>
+        <ul class="nav">
+            <li class="active"><a href="#">Create Page</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+        </ul>
+    </div>
+</div>*@
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="nav">
+            <li><a href="@Url.Action("Create")">Create Post</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+        </ul>
+    </div>
+</div>
+
+@if (Model.Any())
+{
+    <ul>
+        @foreach (var post in Model)
+        {
+            <li><a href="@Url.Action("Details", "Post", new {id = post.Id})">@post.Title</a></li>
+        }
+    </ul>
+}
+else
+{
+    <p>No posts.</p>
+}

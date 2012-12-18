@@ -18,11 +18,18 @@ namespace Blog.Web
     {
         protected override void Configure()
         {
-            CreateMap<PageInputModel, Page>();
+            
             CreateMap<ViewTemplateInputModel, ViewTemplate>();
             CreateMap<ViewTemplate, ViewTemplateInputModel>();
+
+            CreateMap<PageInputModel, Page>();
             CreateMap<Page, PageInputModel>();
             CreateMap<Page, PageViewModel>()
+                .ForMember(dest => dest.Body, opt => opt.MapFrom(s => MvcHtmlString.Create(s.Body)));
+
+            CreateMap<PostInputModel, Post>();
+            CreateMap<Post, PostInputModel>();
+            CreateMap<Post, PostViewModel>()
                 .ForMember(dest => dest.Body, opt => opt.MapFrom(s => MvcHtmlString.Create(s.Body)));
         }
     }
