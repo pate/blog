@@ -82,7 +82,12 @@
                 @if (!Request.IsAuthenticated)
                 {
                     <div class="pull-right">
-                        <a href="@Url.Action("LogOn", "Account")">Login</a>
+                        <a href="@Url.Action("LogOn", "Account")">Sign in</a>
+                    </div>
+                } else
+                {
+                    <div class="pull-right">
+                        <a href="@Url.Action("LogOff", "Account")">Sign out</a>
                     </div>
                 }
                 <p>&copy; 2012-2013 by <a href="http://freshcode.co/">Petrus Theron</a></p>

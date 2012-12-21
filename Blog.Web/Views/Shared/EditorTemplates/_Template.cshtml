@@ -1,0 +1,12 @@
+﻿@if (ViewData.ModelMetadata.HideSurroundingHtml) {
+	@RenderBody()
+} else
+{
+    <div class="control-group">
+        <div class="control-label@((ViewData.ModelMetadata.IsRequired && !ViewData.ModelMetadata.IsReadOnly) ? " required" : "")">
+            @Html.LabelForModel()
+            @*@Html.Label("")*@
+        </div>
+        <div class="controls" title="@ViewData.ModelMetadata.Description">@RenderBody()@Html.ValidationMessageFor(x => x)</div>
+    </div>
+}

@@ -21,7 +21,7 @@ namespace Blog.Web.App_Start
 
             routes.MapRoute(
                 name: "Posts",
-                url: "{slug}.html",
+                url: "posts/{slug}.html",
                 defaults: new { controller = "Post", action = "Display", area = "" },
                 namespaces: new [] { "Blog.Web.Controllers" }
             );
@@ -35,7 +35,7 @@ namespace Blog.Web.App_Start
 
             routes.MapRoute(
                 name: "Pages",
-                url: "pages/{slug}.html",
+                url: "{slug}.html",
                 defaults: new { controller = "Page", action = "Display", area = "" },
                 namespaces: new[] { "Blog.Web.Controllers" }
             );
@@ -46,7 +46,6 @@ namespace Blog.Web.App_Start
                 defaults: new { controller = "Page", action = "Permalink", area = "" },
                 namespaces: new[] { "Blog.Web.Controllers" }
             );
-
 
             routes.MapRoute(
                 name: "Login",

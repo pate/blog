@@ -29,6 +29,10 @@ namespace Blog.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             ViewEngines.Engines.Clear();
+
+            var nustache = new Nustache.Mvc.NustacheViewEngine();
+            ViewEngines.Engines.Add(nustache);
+
             var razor = new RazorViewEngine();
             ViewEngines.Engines.Add(razor);
         }

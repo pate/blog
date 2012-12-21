@@ -58,7 +58,9 @@ namespace Blog.Web.Controllers
         {
             FormsAuthentication.SignOut();
 
-            return RedirectToAction("Index", "Home");
+            this.FlashInfo("You have been successfully signed out.");
+
+            return RedirectToAction("LogOn");
         }
 
         //
