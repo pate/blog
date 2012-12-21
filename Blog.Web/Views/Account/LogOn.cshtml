@@ -23,4 +23,14 @@
 @section scripts {
     @Scripts.Render("~/Scripts/jquery.validate.min.js")
     @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
+    <script type="text/javascript">
+        $(function() {
+            var $field = $('#Username');
+            if ($field.val()) {
+                $field = $('#Password');
+            }
+            if ($field !== null)
+                $field.focus();
+        });
+    </script>
 }
