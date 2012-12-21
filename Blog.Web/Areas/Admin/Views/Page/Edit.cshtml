@@ -35,11 +35,10 @@
 {
     <div class="page-header1">
         <div class="row-fluid">
-                @Html.TextBoxFor(x => x.Title, new { placeholder = "Title" })
+            @Html.TextBoxFor(x => x.Title, new { placeholder = "Title" })
             @Html.TextBoxFor(x => x.Slug, new {})
             <button type="submit" class="hide btn btn-primary btn-large"><i class="icon-save"></i> Update Page</button>
-            <a href="@Url.Action("Display", "Page", new { slug = Model.Slug, area = "" })" class="btn btn-large hide"><i class="icon-undo"></i> Cancel</a>    
-       
+            <a href="@Url.Action("Display", "Page", new { slug = Model.Slug, area = "" })" class="btn btn-large hide"><i class="icon-undo"></i> Cancel</a>
         </div>
     </div>
     @Html.ValidationSummary(false)
@@ -62,9 +61,9 @@
 @section scripts
 {
     @Scripts.Render("~/Scripts/codemirror-3.0/lib/codemirror.js")
-@Scripts.Render("~/Scripts/codemirror-3.0/mode/xml/xml.js")
-@Scripts.Render("~/Scripts/codemirror-3.0/mode/javascript/javascript.js")
-@Scripts.Render("~/Scripts/codemirror-3.0/mode/htmlmixed/htmlmixed.js")
+    @Scripts.Render("~/Scripts/codemirror-3.0/mode/xml/xml.js")
+    @Scripts.Render("~/Scripts/codemirror-3.0/mode/javascript/javascript.js")
+    @Scripts.Render("~/Scripts/codemirror-3.0/mode/htmlmixed/htmlmixed.js")
     <script type="text/javascript">
 
         $(function() {
@@ -82,21 +81,13 @@
 
             function updatePreview() {
                 $('#preview').html(editor.getValue());
-                //var previewFrame = document.getElementById('preview');
-                //var preview = previewFrame.contentDocument || previewFrame.contentWindow.document;
-                //preview.open();
-                ////preview.write('<html><head><link type="text/css" src="test.css" /></head>');
-                //preview.write(editor.getValue());
-                ////preview.write('</html>');
-                //preview.close();
             }
 
             setTimeout(updatePreview, 300);
 
-            $('#submitBtn').click(function () {
+            $('#submitBtn').click(function() {
                 $('#updateForm').submit();
             });
-
         });
     </script>
 }
