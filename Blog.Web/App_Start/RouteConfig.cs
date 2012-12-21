@@ -40,6 +40,13 @@ namespace Blog.Web.App_Start
                 namespaces: new[] { "Blog.Web.Controllers" }
             );
 
+            routes.MapRoute( // this should be a redirect
+                name: "Pages Redirect",
+                url: "pages/{slug}.html",
+                defaults: new { controller = "Page", action = "Display", area = "" },
+                namespaces: new[] { "Blog.Web.Controllers" }
+            );
+
             routes.MapRoute(
                 name: "Pages Permalink",
                 url: "pages/{id}",
