@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="page-header">
+    <h1>Administration</h1>
+</div>
+
+<div class="well">
+    <ul class="nav nav-list">
+        <li><a href="@Url.Action("Index", "Page", new { area = Constants.Areas.Admin })">Pages</a></li>
+        <li><a href="@Url.Action("Index", "Post", new { area = Constants.Areas.Admin })">Posts</a></li>
+        <li><a href="@Url.Action("Index", "User", new { area = Constants.Areas.Admin })">Users</a></li>
+        <li><a href="@Url.Action("Index", "Role", new { area = Constants.Areas.Admin })">Roles</a></li>
+    </ul>
+</div>

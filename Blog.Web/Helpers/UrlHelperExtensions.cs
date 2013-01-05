@@ -12,8 +12,11 @@ namespace Blog.Web.Helpers
                 var routes = new RouteValueDictionary(routeValues);
                 foreach (var item in routes)
                 {
-                    if (url.RequestContext.RouteData.Values[item.Key] != item.Value)
-                        return false;
+                    if (url.RequestContext.RouteData.Values.ContainsKey(item.Key))
+                    {
+                        if (url.RequestContext.RouteData.Values[item.Key] != item.Value)
+                            return false;
+                    }
                 }
             }
 

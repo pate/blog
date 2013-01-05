@@ -4,17 +4,18 @@
     ViewBag.Title = Model.Title;
 }
 
-<div class="page-header">
-
+@section navbar {
     @if (Request.IsAuthenticated)
     {
-        <div class="subnav pull-right">
-            <ul class="nav nav-pills">
-                <li><a href="@Url.Action("Delete", "Post", new {id = Model.Id, Area = Constants.Areas.Admin})">Delete Post</a></li>
-                <li><a href="@Url.Action("Edit", "Post", new {id = Model.Id, Area = Constants.Areas.Admin})">Edit Post</a></li>
-            </ul>
-        </div>
+        <ul class="nav pull-right">
+            <li><a href="@Url.Action("Edit", "Post", new {id = Model.Id, Area = Constants.Areas.Admin})"><i class="icon-edit"></i> Edit Post</a></li>
+            <li><a href="@Url.Action("Delete", "Post", new {id = Model.Id, Area = Constants.Areas.Admin})"><i class="icon-trash"></i> Delete Post</a></li>
+        </ul>
     }
+}
+
+<div class="page-header">
+
     <h1>@Model.Title
         @if (Model.PublishedOn.HasValue)
         {

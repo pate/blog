@@ -36,7 +36,8 @@ namespace Blog.Web.Controllers
                                             Slug = p.Slug,
                                             Title = p.Title,
                                             Description = p.Description,
-                                            ImageUrl = p.ImageUrl
+                                            ImageUrl = p.ImageUrl,
+                                            PublishedOn = p.PublishedOn
                                         };
 
             var viewModel = pagedPosts.ToPagedList(page, pageSize);

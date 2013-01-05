@@ -1,4 +1,6 @@
-﻿namespace Blog.Web.ViewModels
+﻿using System;
+
+namespace Blog.Web.ViewModels
 {
     public class PostListViewModel
     {
@@ -7,5 +9,6 @@
         public string Title { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
+        public DateTime? PublishedOn { get; set; } 
     }
 }

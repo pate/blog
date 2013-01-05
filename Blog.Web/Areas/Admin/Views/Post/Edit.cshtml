@@ -13,10 +13,11 @@
 @using (Html.BeginForm(null, null, new {area = Constants.Areas.Admin }, FormMethod.Post))
 {
     <div class="page-header">
-        <h1>Title</h1>
+        <h1>@Model.Title</h1>
     </div>
     @Html.ValidationSummary(false)
-    @Html.EditorForModel()
+    @Html.EditorFor(x => Model.Title)
+    @Html.EditorFor(x => Model) @* prevents ViewBag.Title from overriding Model.Title *@
     
     <div class="form-actions">
         <button type="submit" class="btn btn-primary btn-large"><i class="icon-save"></i> Update Post</button>

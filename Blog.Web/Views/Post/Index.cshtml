@@ -3,41 +3,46 @@
 @{
     ViewBag.Title = "Index";
 }
-
+@*
 <div class="page-header">
     <h1>Blog</h1>
-</div>
+</div>*@
 
-@if (Request.IsAuthenticated)
-{
-    <a href="@Url.Action("Create", "Post", new { Area = Constants.Areas.Admin })" class="btn btn-primary">New Post</a>
-}
-
-@if (Model.TotalItemCount == 0)
-{
-    <p>Zero search results. Try broadening your query or <a href="@Url.Action("Index", "Post")">show all posts</a>.</p>
-}
-
-
-<div class="media">
-    @foreach (var post in Model)
+@section navbar {
+    @if (Request.IsAuthenticated)
     {
-        if (!post.ImageUrl.IsEmpty())
-         {
-             <a class="pull-left" href="@Url.Action("Display", "Post", new {slug = post.Slug})">
-                 <img class="media-object" src="@post.ImageUrl" alt="@post.Description" />
-             </a>
-         }
-        <div class="media-body">
-            <h4 class="media-heading"><a href="@Url.Action("Display", "Post", new {slug = post.Slug})">@post.Title</a></h4>
-            <div class="media">
-                @post.Description
-            </div>
-        </div>
+        <a href="@Url.Action("Create", "Post", new {Area = Constants.Areas.Admin})" class="btn btn-small pull-right btn-primary">New Post</a>
     }
-</div>
-
-@if (Model.TotalItemCount > 0)
-{
-    @Html.Pager(Model, "Index", "Post")
 }
+   
+
+    @if (Model.TotalItemCount == 0)
+    {
+        <p>Zero search results. Try broadening your query or <a href="@Url.Action("Index", "Post")">show all posts</a>.</p>
+    }
+
+
+    <div class="media">
+        @foreach (var post in Model)
+        {
+            if (!post.ImageUrl.IsEmpty())
+            {
+                <a class="pull-left" href="@Url.Action("Display", "Post", new {slug = post.Slug})">
+                    <img class="media-object" src="@post.ImageUrl" alt="@post.Description" />
+                </a>
+            }
+            <div class="media-body">
+                <h1 class="media-heading"><a href="@Url.Action("Display", "Post", new {slug = post.Slug})">@post.Title</a>
+                    <small>published @Html.DisplayFor(x => post.PublishedOn)</small>
+                </h1>
+                <div class="media">
+                    @post.Description
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (Model.TotalItemCount > 0)
+    {
+        @Html.Pager(Model, "Index", "Post")
+    }

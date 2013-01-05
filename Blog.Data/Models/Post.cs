@@ -4,6 +4,13 @@ using DreamSongs.MongoRepository;
 
 namespace Blog.Data.Models
 {
+    public enum PostFormat
+    {
+        Plaintext,
+        Html,
+        Markdown
+    }
+
     public class Post : Entity
     {
         [Required]
@@ -22,6 +29,8 @@ namespace Blog.Data.Models
         public DateTime CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
         public DateTime? PublishedOn { get; set; }
+
+        public PostFormat Format { get; set; } // Markdown, 
 
         public bool IsActive { get; set; }
     }

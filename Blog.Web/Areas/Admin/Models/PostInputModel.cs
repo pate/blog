@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Web.Areas.Admin.Models
 {
@@ -15,6 +16,10 @@ namespace Blog.Web.Areas.Admin.Models
 
         public string ImageUrl { get; set; }
 
+        [Display(Name = "Published On")]
+        public DateTime? PublishedOn { get; set; }
+
+        [Display(Name = "Published?")]
         public bool IsActive { get; set; }
     }
 }
