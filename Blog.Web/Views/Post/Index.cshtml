@@ -1,7 +1,7 @@
 ﻿@model PagedList.IPagedList<PostListViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.PageTitle = "Index";
 }
 @*
 <div class="page-header">
@@ -34,9 +34,14 @@
             <div class="media-body">
                 <h1 class="media-heading"><a href="@Url.Action("Display", "Post", new {slug = post.Slug})">@post.Title</a>
                     <small>published @Html.DisplayFor(x => post.PublishedOn)</small>
+                                        @if (Request.IsAuthenticated)
+                    {
+                        <a href="@Url.Action("Edit", "Post", new { area = Constants.Areas.Admin, id = post.Id })" class="btn btn-success"><i class="icon-edit"></i> Edit Post</a>
+                    }
                 </h1>
                 <div class="media">
                     @post.Description
+
                 </div>
             </div>
         }

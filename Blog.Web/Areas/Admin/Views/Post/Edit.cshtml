@@ -2,22 +2,38 @@
 @model PostInputModel
 
 @{
-    ViewBag.Title = "Edit Post " + Model.Title;
+    ViewBag.PageTitle = "Edit Post " + Model.Title;
 }
 
 @section head
 {
+    @Styles.Render("~/Scripts/mdd_styles.css")
     @Styles.Render("~/Scripts/redactor/redactor.css")
+    <style type="text/css">
+        .mdd_editor, .mdd_editor_wrap {
+            height: 90%;
+            /*height: 100%;*/
+        }
+        /*
+        .mdd_preview {
+            height: 100%;
+            overflow-y: scroll;
+        }
+
+        #updateForm {
+            height: 100%;
+        }*/
+    </style>
 }
 
-@using (Html.BeginForm(null, null, new {area = Constants.Areas.Admin }, FormMethod.Post))
+@section navbar {
+    <button type="button" class="pull-right btn btn-small btn-primary" id="submitBtn"><i class="icon-save"></i> Update Post</button>
+}
+
+@using (Html.BeginForm(null, null, new { area = Constants.Areas.Admin }, FormMethod.Post, new { id = "updateForm", @class = "" }))
 {
-    <div class="page-header">
-        <h1>@Model.Title</h1>
-    </div>
     @Html.ValidationSummary(false)
-    @Html.EditorFor(x => Model.Title)
-    @Html.EditorFor(x => Model) @* prevents ViewBag.Title from overriding Model.Title *@
+    @Html.EditorForModel()
     
     <div class="form-actions">
         <button type="submit" class="btn btn-primary btn-large"><i class="icon-save"></i> Update Post</button>
@@ -27,12 +43,6 @@
 @section scripts
 {
     @Scripts.Render("~/Scripts/redactor/redactor.js")
-    <script type="text/javascript">
-        $(function () {
-            $('textarea').redactor({
-                minHeight: 400,
-                wym: true
-            });
-        });
-    </script>
+    @Scripts.Render("~/Scripts/MarkdownDeepLib.min.js")
+    @Scripts.Render("~/Scripts/pages/post-editor.js")
 }

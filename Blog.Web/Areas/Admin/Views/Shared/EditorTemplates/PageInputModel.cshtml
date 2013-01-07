@@ -4,8 +4,6 @@
     <div class="row-fluid">
         @Html.TextBoxFor(x => x.Title, new { placeholder = "Title" })
         @Html.TextBoxFor(x => x.Slug, new {})
-        <button type="submit" class="hide btn btn-primary btn-large"><i class="icon-save"></i> Update Page</button>
-        <a href="@Url.Action("Display", "Page", new { slug = Model.Slug, area = "" })" class="btn btn-large hide"><i class="icon-undo"></i> Cancel</a>
     </div>
 </div>
 

@@ -4,6 +4,7 @@ using AutoMapper;
 using Blog.Data.Models;
 using Blog.Web.ViewModels;
 using DreamSongs.MongoRepository;
+using MarkdownDeep;
 using PagedList;
 
 namespace Blog.Web.Controllers
@@ -11,10 +12,15 @@ namespace Blog.Web.Controllers
     public class PostController : Controller
     {
         private IRepository<Post> Posts { get; set; }
+        private Markdown Markdown { get; set; }
 
         public PostController(IRepository<Post> postRepo)
         {
             Posts = postRepo;
+            Markdown = new Markdown()
+                           {
+                               ExtraMode = true
+                           };
         }
 
         public ActionResult Index(
@@ -51,6 +57,13 @@ namespace Blog.Web.Controllers
             var post = Posts.All().FirstOrDefault(x => x.Slug == slug);
             if (post == null)
                 return HttpNotFound("no such page");
+
+            if (post.Format == PostFormat.Markdown)
+            {
+                // Translate
+                var html = Markdown.Transform(post.Body);
+                post.Body = html; // not great
+            }
 
             var viewModel = Mapper.Map<PostViewModel>(post);
 

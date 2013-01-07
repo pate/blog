@@ -1,7 +1,7 @@
 ﻿@model ViewTemplate
 
 @{
-    ViewBag.Title = Model.ViewPath + " View Template Details";
+    ViewBag.PageTitle = Model.ViewPath + " View Template Details";
 }
 
 <a class="btn btn-large" href="@Url.Action("Edit", new { controller = "ViewTemplate", id = Model.Id })">Edit</a>

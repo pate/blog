@@ -108,6 +108,7 @@ namespace Blog.Web.Areas.Admin.Controllers
             {
                 Mapper.Map(inputModel, post);
                 post.UpdatedOn = DateTime.Now;
+                post.Format = PostFormat.Markdown; // this should be coming from the input model
                 Posts.Update(post);
 
                 this.FlashInfo("Updated page.");
